@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="dsshopby_option_form_build_after">
+        <observer name="Dotsquares_ShopbyBrand::AdditionalFormFields"
+                  instance="Dotsquares\ShopbyBrand\Observer\Admin\OptionFormBuildAfter"/>
+    </event>
+    <event name="dsshopby_option_form_featured_fieldset">
+        <observer name="Dotsquares_ShopbyBrand::RenameFiledset"
+                  instance="Dotsquares\ShopbyBrand\Observer\Admin\OptionFormFeatured"/>
+    </event>
+    <event name="admin_system_config_changed_section_dsshopby_brand">
+        <observer name="Dotsquares_ShopbyBrand::ChangeConfiguration"
+                  instance="Dotsquares\ShopbyBrand\Observer\Admin\ConfigChanged"/>
+    </event>
+</config>

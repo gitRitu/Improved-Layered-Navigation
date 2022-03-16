@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Dotsquares\ShopbyBrand\Model\Brand\BrandDataInterface" type="Dotsquares\ShopbyBrand\Model\Brand\BrandData"/>
+    <type name="Dotsquares\ShopbyBase\Model\FilterSetting\AttributeConfig">
+        <arguments>
+            <argument name="attributeProviders" xsi:type="array">
+                <item name="dotsquares_shopby_brand_attriubte_list_provider" xsi:type="object">Dotsquares\ShopbyBrand\Model\FilterSetting\AttributeListProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- <type name="Amasty\Xsearch\Block\Search\Brand">
+        <plugin name="Dotsquares_ShopbyBrand::addBrands" type="Dotsquares\ShopbyBrand\Plugin\Xsearch\Block\Search\Brand" />
+    </type> -->
+
+    <type name="Dotsquares\ShopbyBase\Model\UrlBuilder">
+        <arguments>
+            <argument name="urlAdapters" xsi:type="array">
+                <item name="brand" xsi:type="array">
+                    <item name="adapter" xsi:type="object">Dotsquares\ShopbyBrand\Model\UrlBuilder\Adapter</item>
+                    <item name="sort_order" xsi:type="string">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Sitemap\Model\ItemProvider\Composite">
+        <arguments>
+            <argument name="itemProviders" xsi:type="array">
+                <item name="dsBrand" xsi:type="object">Dotsquares\ShopbyBrand\Model\Sitemap\ItemProvider\Brand</item>
+            </argument>
+        </arguments>
+    </type>
+
+   <!--  <type name="Amasty\XmlSitemap\Model\Sitemap\SourceProvider">
+        <arguments>
+            <argument name="sources" xsi:type="array">
+                <item name="dotsquares_shopbybrand" xsi:type="string">Dotsquares\ShopbyBrand\Model\XmlSitemap\Source\Brand</item>
+            </argument>
+        </arguments>
+    </type> -->
+
+    <type name="Dotsquares\ShopbyBrand\Model\ProductCount">
+        <arguments>
+            <argument name="collectionFactory" xsi:type="object">Magento\CatalogSearch\Model\ResourceModel\Fulltext\CollectionFactory</argument>
+        </arguments>
+    </type>
+
+    <!-- Integration with Dotsquares_ShopbyBase  -->
+    <type name="Dotsquares\ShopbyBase\Model\Integration\ShopbyBrand\GetConfigProvider">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="object" xsi:type="object">Dotsquares\ShopbyBrand\Model\ConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- End integration with Dotsquares_ShopbyBase  -->
+</config>

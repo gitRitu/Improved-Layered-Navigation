@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="Dotsquares_Megamenu::MegaMenu_Label"
+                title="Mega Menu"
+                module="Dotsquares_Megamenu"
+                sortOrder="80"
+                resource="Dotsquares_Megamenu::MegaMenu_Label"
+        />
+        <add
+                id="Dotsquares_Megamenu::MegaMenu"
+                title="Mega Menu Settings"
+                module="Dotsquares_Megamenu"
+                action="adminhtml/system_config/edit/section/dotsquares_megamenu/"
+                sortOrder="10"
+                parent="Dotsquares_Megamenu::MegaMenu_Label"
+                resource="Dotsquares_Megamenu::Megamenu"
+        />
+    </menu>
+</config>

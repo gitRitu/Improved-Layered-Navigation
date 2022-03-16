@@ -1,0 +1,22 @@
+{
+    "name": "dotsquares/module-improved-layered-navigation-page",
+    "description": "Improved Layered Navigation by Dotsquares - Page sub-module",
+    "require": {
+        "dotsquares/base": ">=1.0.1",
+        "dotsquares/module-shop-by-base": ">=2.13.3",
+        "php": ">=7.3.0"
+    },
+    "type": "magento2-module",
+    "version": "2.7.13",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Dotsquares\\ShopbyPage\\": ""
+        }
+    }
+}

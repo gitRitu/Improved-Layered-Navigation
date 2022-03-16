@@ -1,0 +1,61 @@
+<?php
+/** @var \Dotsquares\Shopby\Model\Layer\Filter\Item $filterItem */
+/** @var \Dotsquares\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Dotsquares\Shopby\Block\Navigation\FilterRenderer $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+$filterCode = $escaper->escapeHtml($filterSetting->getAttributeCode());
+?>
+
+<div class="items ds-filter-items-<?= $escaper->escapeHtml($filterCode) ?> ds-dropdown">
+    <form data-dsshopby-filter="<?= $escaper->escapeHtml($filterCode) ?>"
+          data-dsshopby-filter-request-var="<?= $escaper->escapeHtml($block->getFilter()->getRequestVar()) ?>">
+    <?php if (count($filterItems) > 0): ?>
+        <select
+            <?= /* @noEscape */ $block->isMultiselect($filterSetting) ? 'multiple="on"' : '' ?>
+            class="ds-shopby-filter-<?= $escaper->escapeHtml($filterCode) ?> ds-select"
+            name="dsshopby[<?= /* @noEscape */ $block->getFilter()->getRequestVar();?>][]"
+        >
+            <?php if (!$block->isMultiselect($filterSetting)): ?>
+                <option value=""
+                        data-url="<?= /* @noEscape */ $block->getClearUrl()
+                            ? $escaper->escapeUrl($block->getClearUrl())
+                            : '#' ?>"
+                >
+                    <?= $escaper->escapeHtml(__('Select Option ...')) ?>
+                </option>
+            <?php endif; ?>
+            <?php foreach ($filterItems as $filterItem):
+                $disabled = ($filterItem->getCount() == 0) ? ' disabled' : '';
+                $selected = ($block->checkedFilter($filterItem)) ? ' selected' : '';
+                $url = $filterItem->getUrl();
+                $label = $filterItem->getOptionLabel();
+
+                if ($block->isShowProductQuantities($filterSetting->getShowProductQuantities())) {
+                    $label .= ' (' . $filterItem->getCount() . ')';
+                }
+                ?>
+                <option value="<?= $escaper->escapeHtml($filterItem->getValueString()) ?>"
+                        data-url="<?= $escaper->escapeUrl($url) ?>"
+                        <?= /* @noEscape */ $disabled . $selected ?>
+                >
+                    <?= /* @noEscape */ strip_tags($label) ?>
+                </option>
+            <?php endforeach; ?>
+            <script type="text/x-magento-init">
+                {
+                    ".ds-shopby-filter-<?= /* @noEscape */ $filterCode ?>": {
+                        "dsShopbyFilterDropdown": {
+                            "collectFilters": <?= /* @noEscape */ $block->collectFilters() ?>,
+                            "isMultiselect": <?= /* @noEscape */ (int) $block->isMultiselect($filterSetting)?>
+                        }
+                    }
+                }
+            </script>
+        </select>
+    </form>
+    <?php endif; ?>
+</div>
+<?php if ($filterSetting->getAddFromToWidget() && isset($fromToConfig) && is_array($fromToConfig)): ?>
+    <?= /* @noEscape */ $block->getFromToWidget('dropdown') ?>
+<?php endif; ?>

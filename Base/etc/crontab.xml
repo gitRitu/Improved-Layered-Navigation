@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="dotsquares_base">
+        <job name="dsbase_feeds_refresh" instance="Dotsquares\Base\Cron\RefreshFeedData" method="execute">
+            <schedule>0 * * * *</schedule>
+        </job>
+        <job name="dotsquares_base_daily_send_system_info" instance="Dotsquares\Base\Cron\DailySendSystemInfo" method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+        <job name="dotsquares_base_instance_registration" instance="Dotsquares\Base\Cron\InstanceRegistration" method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+    </group>
+</config>

@@ -1,0 +1,15 @@
+<?php
+/** @var \Dotsquares\Base\Block\Adminhtml\System\Config\InformationBlocks\UserGuide $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+<?php if ($guideLink = $block->getUserGuideLink()): ?>
+<div class="dotsquares-user-guide">
+    <span class="message success">
+        <?= $escaper->escapeHtml(__('Need help with the settings? Please  consult the')) ?>
+        <a target="_blank" href="<?= $escaper->escapeUrl($guideLink) ?>">
+            <?= $escaper->escapeHtml(__('user guide')) ?>
+        </a>
+        <?= $escaper->escapeHtml(__('to configure the extension properly.')) ?>
+    </span>
+</div>
+<?php endif; ?>

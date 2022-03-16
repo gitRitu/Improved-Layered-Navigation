@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Observer\MenuCategoryData">
+        <plugin name="dotsquares-megamenu-catalog-observer-menucategorydata"
+                type="Dotsquares\Megamenu\Plugin\CatalogObserverMenuCategoryData" sortOrder="1"/>
+    </type>
+    <preference for="Magento\Theme\Block\Html\Topmenu" type="Dotsquares\Megamenu\Block\Html\Topmenu" />
+    <preference for="Magento\Catalog\Plugin\Block\Topmenu" type="Dotsquares\Megamenu\Plugin\Block\Topmenu" />
+    <type name="Magento\Framework\View\Page\Config\Structure">
+        <plugin name="dotsquares-megamenu-page-config-structure"
+                type="Dotsquares\Megamenu\Plugin\PageConfigStructure" sortOrder="5"/>
+    </type>
+    <type name="Magento\Catalog\Model\Design">
+        <plugin name="dotsquares-megamenu-catalog-model-design"
+                type="Dotsquares\Megamenu\Plugin\CatalogModelDesign" sortOrder="1"/>
+    </type>
+    <type name="Magento\LayeredNavigation\Block\Navigation">
+        <plugin name="dotsquares-megamenu-layerednavigation-block-navigation"
+                type="Dotsquares\Megamenu\Plugin\LayeredNavigation" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Block\Category\View">
+        <plugin name="dotsquares-megamenu-catalog-block-category-view"
+                type="Dotsquares\Megamenu\Plugin\CatalogCategoryView" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Helper\Data">
+        <plugin name="dotsquares-megamenu-catalog-helper-date"
+                type="Dotsquares\Megamenu\Plugin\CatalogHelperData" sortOrder="1"/>
+    </type>
+    <preference for="\Magento\Catalog\Model\ResourceModel\Category\Flat" type="Dotsquares\Megamenu\Model\CategoryFlat" />"
+    <preference for="\Magento\Catalog\Model\ResourceModel\Category" type="Dotsquares\Megamenu\Model\CategoryResource" />"
+</config>

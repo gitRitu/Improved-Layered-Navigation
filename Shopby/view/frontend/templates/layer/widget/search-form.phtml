@@ -1,0 +1,21 @@
+<?php
+/** @var \Dotsquares\ShopbyBase\Model\FilterSetting $filterCode */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<div class="dsshopby-search-box">
+    <input type="text"
+           class="ds-search-box-<?= $escaper->escapeHtml($filterCode) ?>"
+           placeholder="<?= $escaper->escapeHtml(__('Search')) ?>" />
+</div>
+
+<script type="text/x-magento-init">
+            {
+                ".ds-search-box-<?= $escaper->escapeHtml($filterCode)?>": {
+                    "dsShopbyFilterSearch": {
+                        "highlightTemplate": "<span class='dsshopby-highlighted'>$&</span>",
+                        "itemsSelector": ".ds-filter-items-<?= $escaper->escapeHtml($filterCode) ?>"
+                    }
+                }
+            }
+</script>

@@ -1,0 +1,143 @@
+//
+//  Dotsquares JetTheme compatibility
+//  _____________________________________________
+
+//
+//  Imports
+//  ---------------------------------------------
+
+@import '../module/_mixins';
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@dsbrands-filter__active__color: @color-green;
+@dsbrands-filter__active__text-color: #475524;
+@dsbrands-filter__hover__color: #f2f8e2;
+@dsbrands-filter__pressed__color: #e7f2ca;
+@dsbrands-filter__disabled__color: #f8f8f8;
+@dsbrands-filter__disabled__text-color: #a8a69f;
+@dsbrands-filter-button__border-radius: 4px;
+@dsbrands-filter-button__font-size: 16px;
+@dsbrands-filter-button__size: 36px;
+@dsbrands-filter-button__text-color: @color-black;
+@dsbrands-filter-input__height: 50px;
+@dsbrands-filter-input__line-height: 18px;
+@dsbrands-filter-input__text-color: @color-black;
+@dsbrands-filter-input__active__color: @color-black;
+@dsbrands-filter-input__border-radius: 7px;
+@dsbrands-filter-icon__size: 25px;
+@dsbrands-filter-icon__search: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNi4xNzggMTguMTM5YTkuNDAzIDkuNDAzIDAgMDEtNS45MDMgMi4wNzJjLTUuMjE1IDAtOS40NDItNC4yMjYtOS40NDItOS40NCAwLTUuMjEyIDQuMjI3LTkuNDM4IDkuNDQyLTkuNDM4IDUuMjE0IDAgOS40NDEgNC4yMjYgOS40NDEgOS40MzlhOS4zOTcgOS4zOTcgMCAwMS0yLjA3OCA1LjkwOWw2LjUyOSA2LjUyNy0xLjQ2IDEuNDU4LTYuNTI5LTYuNTI3ek0xOCAxMC43NzJhNy43MjQgNy43MjQgMCAwMS03LjcyNSA3LjcyMyA3LjcyNCA3LjcyNCAwIDExMC0xNS40NDZBNy43MjQgNy43MjQgMCAwMTE4IDEwLjc3MnoiIGZpbGw9IiMzRDM3MzEiLz48L3N2Zz4=) center no-repeat;
+@dsbrands-filter-icon__clear: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjMzMyAyMC45NTZMMjAuNDU2IDMuODMzbDEuMjEgMS4yMUw0LjU0NSAyMi4xNjdsLTEuMjEtMS4yMXoiIGZpbGw9IiMzRDM3MzEiLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIxLjY2NyAyMC45NTZMNC41NDQgMy44MzNsLTEuMjEgMS4yMSAxNy4xMjIgMTcuMTIzIDEuMjEtMS4yMXoiIGZpbGw9IiMzRDM3MzEiLz48L3N2Zz4=) center no-repeat;
+@dsbrands-item__hover__color: @color-green;
+@dsbrands-item__active__color: rgba(177, 230, 55, .15);
+@dsbrands-item__color: @color-black;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .dsasty-jet-theme {
+        .dsbrands-letters-filter .dsbrands-letter {
+            margin: 0 10px 10px 0;
+            transition: none;
+        }
+
+        .dsbrands-search-block .dsbrands-input {
+            .dsbrands-input-placeholder(#a8a69f, @color-gray-light, 400, 14px, 16px);
+        }
+    }
+
+    .header.content {
+        flex-wrap: wrap;
+    }
+
+    .page-footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer.content,
+    .page-footer,
+    .header.content,
+    .panel.header {
+        .dsbrands-letters-list,
+        > .dsbrands-brandlist-widget,
+        > .ds-widget-brand-slider {
+            width: 100%;
+            order: 1;
+        }
+    }
+
+    .ui-tooltip.ui-widget,
+    .dsslider .swiper-slide .dsbrands-label,
+    .dsbrands-letters-list .dsbrands-letter .dsbrands-title {
+        .lib-css(color, @dstheme__text-primary__color);
+    }
+
+    .ui-tooltip.ui-widget {
+        .lib-css(border-color, @dstheme__background-secondary__color);
+        .lib-css(background, @dstheme__background-primary__color);
+        .lib-css(box-shadow, 1px 0 3px @dstheme__background-primary__color);
+    }
+
+    .ui-tooltip .arrow {
+        &:before,
+        &:after {
+            .lib-css(border-color, @dstheme__background-secondary__color);
+        }
+    }
+}
+
+//
+//  Desktop
+//  ----------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .dsbrands-letters-filter .dsbrands-letter {
+        margin: 0 9px 9px 0;
+    }
+
+    .dsasty-jet-theme .dsbrands-list-popup {
+        & {
+            border-radius: 4px;
+            box-shadow: none;
+        }
+
+        .dsbrands-letters-filter {
+            background: transparent;
+        }
+    }
+
+    .dsbrands-letter .dsbrands-brand-item .dsbrands-label {
+        letter-spacing: .03em;
+        font-weight: 500;
+        line-height: 16px;
+    }
+
+    .dsbrands-list-popup {
+        background: @dstheme__background-secondary__color
+    }
+
+    .dsbrands-list-popup .dsbrands-letters-filter {
+        & {
+            position: relative;
+        }
+
+        .dsbrands-letter {
+            margin: 0 5px 10px;
+        }
+
+        &:before {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            width: 1px;
+            height: ~'calc(100% - 40px)';
+            background: @color-gray-light;
+            content: '';
+        }
+    }
+}

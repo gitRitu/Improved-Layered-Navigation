@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Dotsquares_ShopbyBase::layered_navigation" title="Layered Navigation" module="Dotsquares_ShopbyBase" parent="Magento_Backend::content" sortOrder="30" resource="Dotsquares_ShopbyBase::layered_navigation"/>
+        <!-- <add id="Dotsquares_ShopbyBase::layered_navigation" title="Improved Layered Navigation: All Products" module="Dotsquares_ShopbyBase"  sortOrder="30"
+             parent="Dotsquares_Base::menu"
+             resource="Dotsquares_ShopbyBase::layered"
+        />
+        <add id="Dotsquares_ShopbyBase::layerednav" title="Configurations" module="Dotsquares_ShopbyBase" sortOrder="10"
+             parent="Dotsquares_ShopbyBase::layered_navigation"
+             action="adminhtml/system_config/edit/section/dsshopby_root/"
+             resource="Dotsquares_ShopbyBase::layered"
+        /> -->
+    </menu>
+</config>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- <block class="Dotsquares\Base\Block\Adminhtml\System\Config\InformationBlocks\Basic" name="dsinfotab.basic">
+            <action method="setClass">
+                <argument name="class" xsi:type="string">dotsquares-info-block</argument>
+            </action>
+            <block class="Dotsquares\Base\Block\Adminhtml\System\Config\InformationBlocks\VersionInfo" name="dsinfotab.version"/>
+            <block class="Dotsquares\Base\Block\Adminhtml\System\Config\InformationBlocks\ExistingConflicts" name="dsinfotab.conflicts"/>
+            <block class="Dotsquares\Base\Block\Adminhtml\System\Config\InformationBlocks\Basic" name="dsinfotab.buttons.wrapper">
+                <action method="setClass">
+                    <argument name="class" xsi:type="string">dsbase-buttons-container</argument>
+                </action>
+                <block class="Dotsquares\Base\Block\Adminhtml\System\Config\InformationBlocks\FeatureRequest" name="dsinfotab.feature"/>
+                <block class="Dotsquares\Base\Block\Adminhtml\System\Config\InformationBlocks\UserGuide" name="dsinfotab.guide"/>
+            </block>
+        </block> -->
+    </body>
+</page>

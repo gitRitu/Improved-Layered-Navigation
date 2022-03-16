@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Dotsquares_ShopbyBase::css/chosen/chosen.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Dotsquares\Shopby\Block\Product\ProductList\Ajax" name="category.dsshopby.ajax"
+                   template="Dotsquares_Shopby::product/cms/ajax.phtml" after="-"/>
+            <container name="dsshopby.catalog.topnav.container" htmlTag="div"
+                       htmlClass="catalog-topnav dotsquares-catalog-topnav" before="-">
+                <block class="Dotsquares\Shopby\Block\Navigation\CategoryTop" name="dsshopby.catalog.topnav"
+                       template="Magento_LayeredNavigation::layer/view.phtml">
+                    <block class="Dotsquares\Shopby\Block\Navigation\Top\State" name="dsshopby.catalog.topnav.state"
+                           as="state"/>
+                    <block class="Dotsquares\Shopby\Block\Navigation\FilterRenderer" name="dsshopby.catalog.topnav.renderer"
+                           as="renderer" template="Magento_LayeredNavigation::layer/filter.phtml"/>
+                </block>
+                <container name="dsshopby.catalog.topnav.container.last" htmlTag="div"
+                           htmlClass="catalog-topnav-last-item" after="dsshopby.catalog.topnav"></container>
+            </container>
+            <block class="Dotsquares\Shopby\Block\Navigation\Sync" name="Dotsquares.shopby.navigation.sync"/>
+            <block class="Dotsquares\Shopby\Block\Navigation\UrlModifier" name="Dotsquares.shopby.navigation.urlmodifier"/>
+            <block class="Dotsquares\Shopby\Block\Navigation\Init"/>
+            <block
+                    class="Dotsquares\Shopby\Block\Navigation\JsInit"
+                    name="dotsquares.shopby.jsinit"
+                    after="-"
+            />
+        </referenceContainer>
+
+        <referenceContainer name="sidebar.main">
+            <block class="Dotsquares\Shopby\Block\Navigation\Cms" name="catalog.leftnav" before="-"
+                   template="Magento_LayeredNavigation::layer/view.phtml">
+                <block class="Magento\LayeredNavigation\Block\Navigation\State" name="catalog.navigation.state"
+                       as="state"/>
+                <block class="Magento\LayeredNavigation\Block\Navigation\FilterRenderer"
+                       name="catalog.navigation.renderer" as="renderer"
+                       template="Magento_LayeredNavigation::layer/filter.phtml"/>
+            </block>
+
+            <block class="Dotsquares\Shopby\Block\Navigation\FilterCollapsing\Category" name="catalog.navigation.collapsing"
+                   after="catalog.leftnav" template="Dotsquares_Shopby::layer/filter_collapsing.phtml"/>
+            <block class="Dotsquares\Shopby\Block\Navigation\SwatchesChoose"
+                   name="catalog.navigation.swatches.choose" after="catalog.navigation.collapsing"
+                   template="Dotsquares_Shopby::layer/filter_swatches_choose.phtml"/>
+            <block class="Dotsquares\Shopby\Block\Navigation\ApplyButton" name="dotsquares.shopby.applybutton.sidebar"
+                   after="-">
+                <action method="setNavigationSelector">
+                    <argument name="selector" xsi:type="string">.sidebar</argument>
+                </action>
+                <action method="setButtonPosition">
+                    <argument name="position" xsi:type="string">sidebar</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

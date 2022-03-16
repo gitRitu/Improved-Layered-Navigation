@@ -1,0 +1,28 @@
+{
+    "name": "dotsquares\/shopby",
+    "description": "Improved Layered Navigation by Dotsquares",
+    "require": {
+        "php": ">=7.3.0",
+        "dotsquares\/base": ">=1.13.1",
+        "magento\/module-layered-navigation": ">=100.2.0",
+        "magento\/module-catalog-search": ">=101.0.2",
+        "magento\/module-swatches": ">=100.2.0",
+        "dotsquares\/module-shop-by-base": ">=2.15.2",
+        "dotsquares\/module-shop-by-brand": ">=2.12.4",
+        "dotsquares\/shopby-seo": ">=2.13.0",
+        "dotsquares\/module-improved-layered-navigation-page": ">=2.7.13"
+    },
+    "type": "magento2-module",
+    "version": "2.18.1",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Dotsquares\\Shopby\\": ""
+        }
+    }
+}

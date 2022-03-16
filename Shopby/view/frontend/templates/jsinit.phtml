@@ -1,0 +1,17 @@
+<?php
+/** @var \Dotsquares\Shopby\Block\Navigation\JsInit $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<div data-ds-js="js-init">
+    <script type="text/x-magento-init">
+        {
+            "[data-ds-js='filter-item-default']": {
+                "dsShopbyFilterItemDefault": {
+                    "collectFilters": <?= /* @noEscape */ $block->collectFilters() ?>,
+                    "clearUrl": "<?= $escaper->escapeUrl($block->getClearUrl()) ?>"
+                }
+            }
+        }
+    </script>
+</div>

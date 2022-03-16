@@ -1,0 +1,22 @@
+{
+    "name": "dotsquares/module-shop-by-brand",
+    "description": "Shop by Brand by Dotsquares",
+    "require": {
+        "dotsquares/module-shop-by-base": ">=2.15.2",
+        "php": ">=7.3.0",
+        "dotsquares/base": ">=1.10.8"
+    },
+    "type": "magento2-module",
+    "version": "2.12.5",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Dotsquares\\ShopbyBrand\\": ""
+        }
+    }
+}

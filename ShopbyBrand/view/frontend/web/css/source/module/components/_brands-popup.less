@@ -1,0 +1,127 @@
+//
+//  Shop by Brand Popup
+//  ______________________________________________
+
+//
+//  Variables
+//  ----------------------------------------------
+
+@dsbrands-popup__width: 600px;
+@dsbrands-popup__height: 415px;
+@dsbrands-popup-filter-letter__size: 40px;
+@dsbrands-popup-filter__background: #fbfbfb;
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .dsbrands-list-popup,
+    .dsbrands-menu-item .dsbrands-arrow {
+        display: none;
+    }
+}
+
+//
+//  Desktop
+//  ----------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .dsbrands-list-popup {
+        position: absolute;
+        width: @dsbrands-popup__width;
+        height: @dsbrands-popup__height;
+        border-radius: 3px;
+        background: #fff;
+        box-shadow: 0 2px 7px rgba(131, 136, 141, .13), 0 10px 15px rgba(131, 136, 141, .13);
+        opacity: 0;
+        transition: all .5s ease;
+        pointer-events: none;
+    }
+
+    .dsbrands-menu-item:hover .dsbrands-list-popup,
+    .dsmenu-item:hover .dsbrands-list-popup {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .dsbrands-list-container {
+        display: flex;
+        height: 100%;
+        font-size: 0;
+    }
+
+    .dsbrands-list-popup .dsbrands-letters-filter {
+        & {
+            @dsbrands-popup-filter__width: ~'calc(((@{dsbrands-filter-button__size} + 12px) * 4) + (14px * 2))';
+            display: block;
+            overflow: auto;
+            box-sizing: border-box;
+            padding: 20px 14px 0;
+            min-width: @dsbrands-popup-filter__width;
+            width: @dsbrands-popup-filter__width;
+            height: 100%;
+            background: @dsbrands-popup-filter__background;
+            font-size: 0;
+        }
+
+        .dsbrands-letter {
+            display: inline-flex;
+            margin: 0 6px 12px;
+        }
+
+        .dsbrands-letter.-letter-all {
+            margin-bottom: 30px;
+            width: ~'calc(100% - 12px)';
+        }
+    }
+
+    .dsbrands-popup-items {
+        display: inline-block;
+        overflow: auto;
+        box-sizing: border-box;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+    }
+
+    .dsbrands-popup-items .dsbrands-letters-list {
+        & {
+            width: 100%;
+        }
+
+        .dsbrands-letter {
+            margin-bottom: 30px;
+            padding-right: 0;
+        }
+
+        &:last-child .dsbrands-letter {
+            margin-bottom: 0;
+        }
+
+        .dsbrands-brand-item {
+            min-width: 100px;
+        }
+    }
+
+    .dsbrands-popup-items .dsbrands-letters-list .dsbrands-brand-item {
+        & {
+            min-width: 100px;
+        }
+
+        .dsbrands-label {
+            max-width: 130px;
+        }
+
+        &.-no-logo {
+            max-width: 102px;
+        }
+    }
+
+    .dsbrands-popup-items .dsbrands-letter .dsbrands-brand-item .dsbrands-empty {
+        font-weight: 400;
+        font-size: @dsbrands-popup-filter-letter__size;
+    }
+}

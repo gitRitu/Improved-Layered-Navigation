@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Dotsquares_Shopby:etc/config.xsd">
+    <preference for="Dotsquares\ShopbyBase\Api\Data\FilterSettingRepositoryInterface"
+                type="Dotsquares\ShopbyBase\Model\FilterSettingRepository" />
+    <preference for="Dotsquares\ShopbyBase\Api\Data\OptionSettingRepositoryInterface"
+                type="Dotsquares\ShopbyBase\Model\OptionSettingRepository" />
+    <preference for="Dotsquares\ShopbyBase\Api\Data\FilterSettingInterface" type="Dotsquares\ShopbyBase\Model\FilterSetting" />
+    <preference for="Dotsquares\ShopbyBase\Api\Data\OptionSettingInterface" type="Dotsquares\ShopbyBase\Model\OptionSetting" />
+    <preference for="Dotsquares\ShopbyBase\Api\UrlBuilderInterface" type="Dotsquares\ShopbyBase\Model\UrlBuilder" />
+
+    <type name="Dotsquares\ShopbyBase\Model\Di\Wrapper">
+        <arguments>
+            <argument name="name" xsi:type="string">Magento\CatalogPermissions\Model\Permission\Index</argument>
+        </arguments>
+    </type>
+
+    <type name="Dotsquares\ShopbyBase\Model\FilterDataLoader">
+        <arguments>
+            <argument name="adapters" xsi:type="array">
+                <item name="attribute" xsi:type="object">Dotsquares\ShopbyBase\Model\FilterDataLoader\Attribute</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="\Magento\Catalog\Api\ProductAttributeRepositoryInterface">
+        <plugin name="Dotsquares_ShopbyBase::setExtensionAttributesForGetMethod"
+                type="Dotsquares\ShopbyBase\Plugin\Catalog\Api\ProductAttributeRepositoryInterface\SetExtensionAttributes"/>
+    </type>
+
+    <type name="\Magento\Catalog\Api\ProductAttributeRepositoryInterface">
+        <plugin name="Dotsquares_ShopbyBase::setExtensionAttributesForGetListMethod"
+                type="Dotsquares\ShopbyBase\Plugin\Catalog\Api\ProductAttributeRepositoryInterface\SetListExtensionAttributes"/>
+    </type>
+
+    <type name="\Magento\Catalog\Api\ProductAttributeRepositoryInterface">
+        <plugin name="Dotsquares_ShopbyBase::saveExtensionAttributesForRepository"
+                type="Dotsquares\ShopbyBase\Plugin\Catalog\Api\ProductAttributeRepositoryInterface\SaveExtensionAttributes"/>
+    </type>
+
+    <type name="\Magento\Catalog\Api\Data\ProductAttributeInterface">
+        <plugin name="Dotsquares_ShopbyBase::saveExtensionAttributesForModel"
+                type="Dotsquares\ShopbyBase\Plugin\Catalog\Api\Data\ProductAttributeInterface\SaveExtensionAttributes"/>
+    </type>
+
+    <type name="\Magento\Catalog\Model\Layer\Search\FilterableAttributeList">
+        <plugin name="Dotsquares_ShopbyBase::loadExtensionAttributesForList"
+                type="Dotsquares\ShopbyBase\Plugin\Catalog\Model\Layer\FilterableAttributeListInterface\LoadExtensionAttributes"/>
+    </type>
+</config>

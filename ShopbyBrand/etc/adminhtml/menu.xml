@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+      <add id="Dotsquares_ShopbyBrand::slider" title="Brand Management" module="Dotsquares_ShopbyBrand" sortOrder="10"
+             parent="Dotsquares_ShopbyBase::layered_navigation" action="dotsquares_shopbybrand/slider/index" resource="Dotsquares_ShopbyBrand::slider"/>
+       <!--  <add id="Dotsquares_ShopbyBrand::slider" title="Improved Layered Navigation: Brands" module="Dotsquares_ShopbyBrand"  sortOrder="40"
+             parent="Dotsquares_Base::menu"
+             resource="Dotsquares_ShopbyBrand::slider"
+        />
+        <add id="Dotsquares_ShopbyBrand::brandslider" title="Brand Management" module="Dotsquares_ShopbyBrand" sortOrder="10"
+             parent="Dotsquares_ShopbyBrand::slider"
+             action="dotsquares_shopbybrand/slider/index"
+             resource="Dotsquares_ShopbyBrand::slider"
+        />
+        <add
+                id="Dotsquares_ShopbyBrand::sliders"
+                title="Configurations"
+                module="Dotsquares_ShopbyBrand"
+                action="adminhtml/system_config/edit/section/dsshopby_brand/"
+                sortOrder="20"
+                parent="Dotsquares_ShopbyBrand::slider"
+                resource="Dotsquares_ShopbyBrand::slider"
+        /> -->
+    </menu>
+</config>

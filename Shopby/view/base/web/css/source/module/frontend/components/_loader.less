@@ -1,0 +1,60 @@
+//
+//  Loader styles
+//  __________________________________________________
+
+//
+//  Variables
+//  --------------------------------------------------
+
+@dsshopby-loader__background-image: @dsshopby-loader__url;
+@dsshopby-loader__size: 100px;
+
+//
+//  Common
+//  --------------------------------------------------
+
+& when (@media-common = true) {
+    #dotsquares-shopby-product-list {
+        & {
+            z-index: 1;
+        }
+
+        .products.wrapper {
+            position: relative;
+        }
+    }
+
+    .dsshopby-overlay-block {
+        & {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 230;
+            display: none;
+            width: 100%;
+            background: rgba(255, 255, 255, .5);
+        }
+
+        > .dsshopby-loader {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            display: block;
+            width: @dsshopby-loader__size;
+            height: @dsshopby-loader__size;
+            background: @dsshopby-loader__background-image center/@dsshopby-loader__size no-repeat;
+            transform: translate(-50%, -10%);
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    #dotsquares-shopby-product-list .dsshopby-overlay-block > .dsshopby-loader {
+        top: 30%;
+        transform: translate(-50%, -30%);
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Dotsquares\ShopbyBase\Model\Customizer\Category">
+        <arguments>
+            <argument name="customizers" xsi:type="array">
+                <item name="page" xsi:type="string">Dotsquares\ShopbyPage\Model\Customizer\Category\Page</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Helper\Category">
+        <plugin name="Dotsquares_ShopbyPage::TemplateContext"
+                type="Dotsquares\ShopbyPage\Plugin\Catalog\Helper\Category" sortOrder="100"/>
+    </type>
+    <type name="Dotsquares\ShopbySeo\Helper\Meta">
+        <plugin name="Dotsquares_ShopbyPage::PageIndexTag" type="Dotsquares\ShopbyPage\Plugin\ShopbySeo\Helper\Meta" />
+    </type>
+</config>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Dotsquares_Megamenu::css/navigation_mobile.css" media="screen and (max-width: 767px)"/>
+        <css src="Dotsquares_Megamenu::css/navigation_desktop.css" media="screen and (min-width: 768px)"/>
+    </head>
+    <body>
+        <referenceContainer name="before.body.end">
+            <block ifconfig="dotsquares_megamenu/megamenu/enable" class="Dotsquares\Megamenu\Block\Html\Topmenu" name="navigation.js" template="Dotsquares_Megamenu::navigation_js.phtml" />
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,45 @@
+<?php
+/** @var \Dotsquares\Shopby\Block\Navigation\Widget\HideMoreOptions $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+use Dotsquares\Shopby\Model\Source\DisplayMode;
+
+$dataDsJsAttribute = 'data-ds-js=%s';
+$dataTextMore = 'Show (<span class="ds-counter" data-ds-counter="counter"></span>) more';
+
+if ($block->getIsState()) {
+    $buttonSelector = sprintf($dataDsJsAttribute, 'show-more_button_state');
+    $itemSelector = '[' . sprintf($dataDsJsAttribute, 'shopby-container') . ']';
+    $numberUnfoldedOptions = $block->getUnfoldedOptions();
+    $isModeDropdown = false;
+} else {
+    $filterSetting = $block->getFilterSetting();
+    $isModeDropdown = $filterSetting->getDisplayMode() == DisplayMode::MODE_DROPDOWN;
+    $filterCode = $escaper->escapeHtml($filterSetting->getAttributeCode());
+    $buttonSelector = sprintf($dataDsJsAttribute, 'ds-filter-items-' . $filterCode . '-show-more');
+    $itemSelector = '.ds-filter-items-' . $filterCode;
+    $numberUnfoldedOptions = $filterSetting->getNumberUnfoldedOptions();
+}
+?>
+
+<?php if (!$isModeDropdown): ?>
+    <a class="ds-show-more"
+       title="<?= $escaper->escapeHtml(__('Show more')) ?>" <?= $escaper->escapeHtml($buttonSelector) ?>
+       data-text-more="<?= $escaper->escapeHtml(__($dataTextMore)) ?>"
+       data-text-less="<?= $escaper->escapeHtml(__('Less'))?>"
+       data-is-hide="false">
+        <?= $escaper->escapeHtml(__('Less')) ?>
+    </a>
+
+    <script type="text/x-magento-init">
+        {
+            "<?= /* @noEscape */ $itemSelector ?>": {
+                "dsShopbyFilterHideMoreOptions": {
+                    "numberUnfoldedOptions": <?= $escaper->escapeHtml($numberUnfoldedOptions) ?>,
+                    "buttonSelector": "[<?= /* @noEscape */ $buttonSelector ?>]",
+                    "isState": "<?= /* @noEscape */ $block->getIsState() ?>"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

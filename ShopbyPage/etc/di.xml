@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Dotsquares\ShopbyPage\Api\Data\PageInterface"
+                type="Dotsquares\ShopbyPage\Model\Data\Page" />
+    <preference for="Dotsquares\ShopbyPage\Api\PageRepositoryInterface"
+                type="Dotsquares\ShopbyPage\Model\ResourceModel\PageRepository" />
+    <preference for="Dotsquares\ShopbyPage\Api\Data\PageSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dotsquares_shopbypage_page_listing_data_source" xsi:type="string">Dotsquares\ShopbyPage\Model\ResourceModel\Page\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Dotsquares\ShopbyPage\Model\ResourceModel\Page\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dotsquares_dsshopby_page</argument>
+            <argument name="eventPrefix" xsi:type="string">dotsquares_dsshopby_page_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">dotsquares_dsshopby_page_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Dotsquares\ShopbyPage\Model\ResourceModel\Page</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Sitemap\Model\ItemProvider\Composite">
+        <arguments>
+            <argument name="itemProviders" xsi:type="array">
+                <item name="dsCustomPage" xsi:type="object">Dotsquares\ShopbyPage\Model\Sitemap\ItemProvider\CustomPage</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Sitemap\Model\Sitemap">
+        <plugin name="Dotsquares_ShopbyPage::add-paget-to-default_sitemap" type="Dotsquares\ShopbyPage\Plugin\XmlSitemap\Model\DefaultSitemap" />
+    </type>
+
+    <!-- <type name="Amasty\XmlSitemap\Model\Sitemap\SourceProvider">
+        <arguments>
+            <argument name="sources" xsi:type="array">
+                <item name="dotsquares_shopbypage" xsi:type="string">Dotsquares\ShopbyPage\Model\XmlSitemap\Source\CustomPage</item>
+            </argument>
+        </arguments>
+    </type> -->
+</config>

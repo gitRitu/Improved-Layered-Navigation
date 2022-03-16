@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Dotsquares\Shopby\Block\Navigation\State\Swatch">
+        <plugin name="Dotsquares_GroupedOptions::add_grouped_swatches" type="Dotsquares\GroupedOptions\Plugin\Shopby\Block\Navigation\State\AddGroupedSwatches" />
+    </type>
+
+    <type name="Dotsquares\Shopby\Helper\Content">
+        <plugin name="Dotsquares_GroupedOptions::AddGroupOptionData"
+                type="Dotsquares\GroupedOptions\Plugin\Shopby\Helper\Content\AddGroupOptionData"/>
+    </type>
+
+    <type name="Dotsquares\Shopby\Block\Navigation\SwatchesChoose">
+        <plugin name="Dotsquares_GroupedOptions::ValidateGroupOptions"
+                type="Dotsquares\GroupedOptions\Plugin\Shopby\Block\Navigation\SwatchesChoose\ValidateGroupOptions"/>
+    </type>
+
+    <type name="Magento\CatalogSearch\Model\Layer\Filter\Price">
+        <plugin name="Dotsquares_GroupedOptions::ChangePriceLabels" type="Dotsquares\GroupedOptions\Plugin\CatalogSearch\Model\Layer\Filter\Price\ChangeLabel" />
+    </type>
+
+    <type name="Magento\CatalogSearch\Model\Layer\Filter\Decimal">
+        <plugin name="Dotsquares_GroupedOptions::ChangeDecimalLabels" type="Dotsquares\GroupedOptions\Plugin\CatalogSearch\Model\Layer\Filter\Decimal\ChangeLabel" />
+    </type>
+
+    <type name="Magento\Catalog\Model\Layer\State">
+        <plugin name="Dotsquares_GroupedOptions::ChangeDecimalLabelsState" type="Dotsquares\GroupedOptions\Plugin\Catalog\Model\Layer\State\ChangeFilterLabel" />
+    </type>
+</config>

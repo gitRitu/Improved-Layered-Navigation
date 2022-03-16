@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="dotsquares_shopby_brand" xsi:type="array">
+                    <item name="class" xsi:type="string">Dotsquares\ShopbyBrand\Controller\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">40</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\ResourceModel\Product\Collection">
+        <plugin name="Dotsquares_ShopbyBrand::changeCategoryForUrlRewrites"
+                type="Dotsquares\ShopbyBrand\Plugin\Catalog\Model\ResourceModel\Product\Collection\FixUrlRewrites"/>
+    </type>
+    <type name="Magento\Catalog\Model\Layer\State">
+        <plugin name="Dotsquares_ShopbyBrand::ExcludeBrandFilterFromStage"
+                type="Dotsquares\ShopbyBrand\Plugin\Catalog\Model\Layer\State"/>
+    </type>
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="Dotsquares_ShopbyBrand::TopMenuFirst"
+                type="Dotsquares\ShopbyBrand\Plugin\Block\Html\Topmenu" sortOrder="-1" />
+        <plugin name="Dotsquares_ShopbyBrand::TopMenuLast"
+                type="Dotsquares\ShopbyBrand\Plugin\Block\Html\TopmenuLast" sortOrder="999" />
+    </type>
+    <!-- <type name="Infortis\UltraMegamenu\Block\Navigation">
+        <plugin name="Dotsquares_ShopbyBrand::TopMenuUltimo"
+                type="Dotsquares\ShopbyBrand\Plugin\Block\Html\TopmenuThemes" sortOrder="999" />
+    </type>
+    <type name="Smartwave\Megamenu\Block\Topmenu">
+        <plugin name="Dotsquares_ShopbyBrand::TopMenuPorto"
+                type="Dotsquares\ShopbyBrand\Plugin\Block\Html\TopmenuThemes" sortOrder="999" />
+    </type>
+    <type name="Amasty\MegaMenuLite\Model\Menu\TreeResolver">
+        <plugin name="Dotsquares_ShopbyBrand::Dotsquares_MegaMenu"
+                type="Dotsquares\ShopbyBrand\Plugin\Block\Html\MegaMenu" sortOrder="999" />
+    </type> -->
+    <type name="Dotsquares\ShopbyBase\Model\Customizer\Category">
+        <arguments>
+            <argument name="customizers" xsi:type="array">
+                <item name="brand" xsi:type="string">\Dotsquares\ShopbyBrand\Model\Customizer\Category\Brand</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Theme\Block\Html\Title">
+        <plugin name="Dotsquares_ShopbyBrand::linksTitle"
+                type="Dotsquares\ShopbyBrand\Plugin\Catalog\Block\Product\View\BlockHtmlTitlePlugin" />
+    </type>
+    <type name="Dotsquares\Mage24Fix\Block\Theme\Html\Title">
+        <plugin name="Dotsquares_ShopbyBrand::linksTitle"
+                type="Dotsquares\ShopbyBrand\Plugin\Catalog\Block\Product\View\BlockHtmlTitlePlugin" />
+    </type>
+
+    <type name="Dotsquares\Shopby\Model\Layer\Filter\Attribute">
+        <plugin name="remove-brand-from-filter" type="Dotsquares\ShopbyBrand\Plugin\AttributeFilterPlugin"/>
+    </type>
+    <type name="Dotsquares\Shopby\Model\Layer\Filter\Resolver\FilterRequestDataResolver">
+        <plugin name="remove-brand-from-filter" type="Dotsquares\ShopbyBrand\Plugin\Shopby\Model\Layer\Filter\Resolver\FilterRequestDataResolver\HideBrandFilterOnBrandPage"/>
+    </type>
+
+    <type name="Dotsquares\Shopby\Helper\UrlBuilder">
+        <plugin name="Dotsquares_ShopbyBrand::urlBuilder" type="Dotsquares\ShopbyBrand\Plugin\Shopby\Helper\UrlBuilder" />
+    </type>
+    <type name="Dotsquares\ShopbySeo\Helper\Url">
+        <plugin name="Dotsquares_ShopbyBrand::urlBuilderSeo" type="Dotsquares\ShopbyBrand\Plugin\ShopbySeo\Helper\Url" />
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="Dotsquares_ShopbyBrand::show_logo_on_listing"
+                type="Dotsquares\ShopbyBrand\Plugin\Catalog\Block\Product\ListProduct\AddBrandIconForProduct" />
+    </type>
+
+    <virtualType name="Magento\CatalogSearch\Block\SearchResult\ListProduct">
+        <plugin name="Dotsquares_ShopbyBrand::show_logo_on_listing_search"
+                type="Dotsquares\ShopbyBrand\Plugin\Catalog\Block\Product\ListProduct\AddBrandIconForProduct" />
+    </virtualType>
+
+   <!--  <type name="Amasty\Mostviewed\Block\Widget\Related">
+        <plugin name="Dotsquares_ShopbyBrand::add_to_related"
+                type="Dotsquares\ShopbyBrand\Plugin\Catalog\Block\Product\ListProduct\AddBrandIconForProduct" />
+    </type> -->
+
+    <type name="Dotsquares\ShopbySeo\Controller\Router">
+        <plugin name="Dotsquares_ShopbyBrand::SkipSeoRequestModification"
+                type="Dotsquares\ShopbyBrand\Plugin\ShopbySeo\Controller\Router" />
+    </type>
+
+    <type name="Dotsquares\ShopbyBase\Model\UrlBuilder">
+        <arguments>
+            <argument name="urlAdapters" xsi:type="array">
+                <item name="brand" xsi:type="array">
+                    <item name="adapter" xsi:type="object">Dotsquares\ShopbyBrand\Model\UrlBuilder\Adapter</item>
+                    <item name="sort_order" xsi:type="string">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Dotsquares\ShopbyBrand\Controller\Index\Index">
+        <arguments>
+            <argument name="categoryManager" xsi:type="object">Dotsquares\ShopbyBase\Model\Category\Manager\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\CatalogStaging\Model\ResourceModel\Fulltext\Collection">
+        <arguments>
+            <argument name="searchCriteriaBuilder" xsi:type="object">Magento\Framework\Api\Search\SearchCriteriaBuilder</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection">
+        <arguments>
+            <argument name="searchCriteriaBuilder" xsi:type="object">Magento\Framework\Api\Search\SearchCriteriaBuilder</argument>
+        </arguments>
+    </type>
+</config>

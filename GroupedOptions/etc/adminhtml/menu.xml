@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+     <!--    <add id="Dotsquares_GroupedOptions::group_options"
+             title="Manage Grouped Options"
+             module="Dotsquares_GroupedOptions"
+             parent="Magento_Backend::stores_attributes"
+             sortOrder="80"
+             action="dsgrouped_options/group/index"
+             resource="Dotsquares_GroupedOptions::group_options"
+        /> -->
+            <!-- <add id="Dotsquares_GroupedOptionss::group_options"
+             title="Manage Grouped Options"
+             module="Dotsquares_GroupedOptions"
+             parent="Dotsquares_Base::menu"
+             sortOrder="80"
+             action="dsgrouped_options/group/index"
+             resource="Dotsquares_GroupedOptions::group_options"
+        /> -->
+        <!--  <add id="Dotsquares_GroupedOptions::group_options" title="Grouped Options" module="Dotsquares_GroupedOptions"  sortOrder="30"
+             parent="Dotsquares_Base::menu"
+             resource="Dotsquares_GroupedOptions::group_options"
+        />
+        <add id="Dotsquares_GroupedOptionss::grouped_options" title="Manage Grouped Options" module="Dotsquares_GroupedOptions" sortOrder="10"
+             parent="Dotsquares_GroupedOptions::group_options"
+             action="dsgrouped_options/group/index"
+             resource="Dotsquares_GroupedOptions::group_options"
+        /> -->
+        <add id="Dotsquares_GroupedOptions::group_optionss"
+             title="Manage Grouped Options"
+             module="Dotsquares_GroupedOptions"
+             parent="Magento_Backend::stores_attributes"
+             sortOrder="80"
+             action="dsgrouped_options/group/index"
+             resource="Dotsquares_GroupedOptions::group_options"
+        />
+    </menu>
+</config>

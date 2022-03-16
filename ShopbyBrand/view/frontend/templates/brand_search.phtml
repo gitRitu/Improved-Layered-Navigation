@@ -1,0 +1,38 @@
+<?php
+/** @var \Dotsquares\ShopbyBrand\Block\Widget\BrandList $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<?php if ($block->getData('side')): ?>
+<div class="block block-layered-nav block-layered-nav--no-filters">
+    <div class="block-content toggle-content">
+        <dl>
+            <dt><?= $escaper->escapeHtml(__('Search Brands'))?></dt>
+            <dd>
+<?php endif;?>
+                <div class="dsbrands-search-wrapper">
+                    <label for="dsbrands-search-input"
+                           class="dsbrands-search-block"
+                           data-mage-init='{"dsBrandsSearch": {
+                               "brands": <?= /* @noEscape */ $block->getBrands(); ?>
+                           }}'
+                    >
+                        <input type="text"
+                               class="input-text dsbrands-input"
+                               data-dsbrands-js="input"
+                               id="dsbrands-search-input"
+                               placeholder="<?= $escaper->escapeHtmlAttr(__('Search brand here...')) ?>"
+                               value="" />
+                        <button class="dsbrands-clear"
+                                data-dsbrands-js="clear"
+                                aria-label="<?= $escaper->escapeHtmlAttr(__('Clear')) ?>"
+                                title="<?= $escaper->escapeHtmlAttr(__('Clear')) ?>"></button>
+                        <span class="dsbrands-livesearch-block" data-ambrands-js="livesearch"></span>
+                    </label>
+                </div>
+<?php if ($block->getData('side')): ?>
+            </dd>
+        </dl>
+    </div>
+</div>
+<?php endif;?>

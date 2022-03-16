@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="\Magento\Catalog\Block\Category\View">
+        <plugin name="Dotsquares_ShopbyBase::catalogCategoryView"
+                type="Dotsquares\ShopbyBase\Plugin\Catalog\Block\Category\View" sortOrder="100"/>
+    </type>
+
+    <type name="\Magento\Catalog\Model\Category\Image">
+        <plugin name="Dotsquares_ShopbyBase::catalogCategory"
+                type="Dotsquares\ShopbyBase\Plugin\Catalog\Model\Category" sortOrder="100"/>
+    </type>
+
+    <type name="\Magento\Catalog\Model\Category">
+        <plugin name="Dotsquares_ShopbyBase::catalogCategoryImage"
+                type="Dotsquares\ShopbyBase\Plugin\Catalog\Model\Category" sortOrder="100"/>
+    </type>
+
+    <type name="\Magento\Catalog\Model\Category\Image">
+        <plugin name="Dotsquares_ShopbyBase::customizeCategoryImage"
+                type="Dotsquares\ShopbyBase\Plugin\Catalog\Model\Category\ImagePlugin" sortOrder="100"/>
+    </type>
+
+    <type name="Magento\Framework\View\Page\Title">
+        <plugin name="Dotsquares_ShopbyBase::pageTitlePlugin" type="Dotsquares\ShopbyBase\Plugin\View\Page\Title"/>
+    </type>
+
+    <type name="Dotsquares\ShopbyBase\Model\UrlBuilder">
+        <arguments>
+            <argument name="urlAdapters" xsi:type="array">
+                <item name="base" xsi:type="array">
+                    <item name="adapter" xsi:type="object">\Dotsquares\ShopbyBase\Model\UrlBuilder\Adapter</item>
+                    <item name="sort_order" xsi:type="string">100</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Search\Request">
+        <plugin name="Dotsquares_Shopby::undefinedSearchFix" type="Dotsquares\ShopbyBase\Plugin\Framework\Search\RequestPlugin" />
+    </type>
+</config>

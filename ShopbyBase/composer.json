@@ -1,0 +1,22 @@
+{
+    "name": "dotsquares/module-shop-by-base",
+    "description": "Base Improved Layered Navigation by Dotsquares",
+    "require": {
+        "php": ">=7.3.0",
+        "dotsquares/base": "*",
+        "dotsquares/module-mage24fix": ">=1.0.0"
+    },
+    "type": "magento2-module",
+    "version": "2.15.2",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Dotsquares\\ShopbyBase\\": ""
+        }
+    }
+}

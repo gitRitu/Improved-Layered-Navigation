@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Dotsquares_ShopbyBrand" setup_version="2.10.12">
+        <sequence>
+            <module name="Dotsquares_Base" />
+            <module name="Dotsquares_ShopbyBase" />
+        </sequence>
+    </module>
+</config>

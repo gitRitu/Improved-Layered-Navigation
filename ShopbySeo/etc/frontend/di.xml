@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Controller\Category\View">
+        <plugin name="dotsquares_shopby_page_view" type="\Dotsquares\ShopbySeo\Plugin\CategoryViewPlugin" sortOrder="1"/>
+    </type>
+    <type name="Dotsquares\Shopby\Controller\Index\Index">
+        <plugin name="dotsquares_shopby_page_view" type="\Dotsquares\ShopbySeo\Plugin\CategoryViewPlugin" sortOrder="1"/>
+    </type>
+    <type name="Dotsquares\ShopbyBrand\Controller\Index\Index">
+        <plugin name="dotsquares_shopby_page_view" type="\Dotsquares\ShopbySeo\Plugin\CategoryViewPlugin" sortOrder="1"/>
+    </type>
+    <!-- <type name="\Amasty\Xlanding\Controller\Page\View">
+        <plugin name="Dotsquares_ShopbySeo::prepare_amasty_xlanding_page_meta" type="\Dotsquares\ShopbySeo\Plugin\CategoryViewPlugin" sortOrder="1"/>
+    </type> -->
+    <type name="Magento\Framework\View\Page\Config">
+        <plugin name="Dotsquares_ShopbySeo::change_meta_data" type="Dotsquares\ShopbySeo\Plugin\Framework\View\Page\Config" />
+    </type>
+
+    <type name="Magento\Framework\App\FrontController">
+        <plugin name="Dotsquares_ShopbySeo::SeoRedirect" type="Dotsquares\ShopbySeo\Plugin\Framework\App\FrontController" />
+    </type>
+
+    <type name="Magento\Framework\App\Action\Forward">
+        <plugin name="Dotsquares_ShopbySeo::SeoRedirect" type="Dotsquares\ShopbySeo\Plugin\Framework\App\Action\Forward" />
+    </type>
+
+    <type name="Dotsquares\Shopby\Controller\Router">
+        <plugin name="Dotsquares_ShopbySeo::SeofyAllProductsUrl" type="Dotsquares\ShopbySeo\Plugin\Shopby\Controller\Router" />
+    </type>
+
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="dotsquares_seo_router" xsi:type="array">
+                    <item name="class" xsi:type="string">\Dotsquares\ShopbySeo\Controller\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">15</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Dotsquares\ShopbyBase\Model\Customizer\Category">
+        <arguments>
+            <argument name="customizers" xsi:type="array">
+                <item name="seo" xsi:type="string">Dotsquares\ShopbySeo\Model\Customizer\Category\Seo</item>
+                <item name="seoLast" xsi:type="string">Dotsquares\ShopbySeo\Model\Customizer\Category\SeoLast</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Dotsquares\ShopbyBase\Model\UrlBuilder">
+        <arguments>
+            <argument name="urlModifiers" xsi:type="array">
+                <item name="seo" xsi:type="array">
+                    <item name="adapter" xsi:type="object">Dotsquares\ShopbySeo\Model\UrlModifier</item>
+                    <item name="sort_order" xsi:type="string">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Dotsquares\Shopby\Model\UrlBuilder\Adapter">
+        <plugin name="Dotsquares_ShopbySeo::AddSeoSuffix" type="Dotsquares\ShopbySeo\Plugin\Shopby\Model\UrlBuilder\Adapter" />
+    </type>
+
+    <type name="Dotsquares\ShopbyBrand\Model\UrlBuilder\Adapter">
+        <plugin name="Dotsquares_ShopbySeo::AddSeoSuffix" type="Dotsquares\ShopbySeo\Plugin\ShopbyBrand\Model\UrlBuilder\Adapter" />
+    </type>
+
+    <type name="Magento\Framework\Controller\ResultInterface">
+        <plugin name="Dotsquares_ShopbySeo::processPageResult" type="Dotsquares\ShopbySeo\Plugin\Framework\Controller\ProcessPageResultPlugin" sortOrder="-1" />
+    </type>
+</config>

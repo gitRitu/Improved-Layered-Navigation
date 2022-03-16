@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="dotsquares_shopby" translate="label,description" instance="Dotsquares\ShopbyBase\Model\Cache\Type">
+        <label>Dotsquares Improved Layered Navigation</label>
+        <description>Settings for your filters and their options</description>
+    </type>
+</config>

@@ -1,0 +1,15 @@
+<?php
+/** @var \Dotsquares\Base\Block\Adminhtml\System\Config\InformationBlocks\ExistingConflicts $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+<?php $messages = $block->getConflictsMessages(); ?>
+<?php if (!empty($messages)): ?>
+    <div class="dotsquares-conflicts-title">
+        <?= $escaper->escapeHtml(__('Problems detected:')) ?>
+    </div>
+    <div class="dotsquares-disable-extensions">
+        <?php foreach ($messages as $message): ?>
+            <p class="message message-error"><?= $escaper->escapeHtml($message) ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

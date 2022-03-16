@@ -1,0 +1,13 @@
+<?php
+/** @var \Dotsquares\Shopby\Block\Navigation\SwatchesChoose $block */
+?>
+
+<script type="text/x-magento-init">
+    {
+        ".products-grid, .products-list": {
+            "dsShopbySwatchesChoose": {
+                "listSwatches": <?= /* @noEscape */ $block->getSwatchesByJson();?>
+            }
+        }
+    }
+</script>

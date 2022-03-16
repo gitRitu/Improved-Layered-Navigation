@@ -1,0 +1,27 @@
+<?php
+/* @var $block \Dotsquares\Shopby\Block\Adminhtml\System\Config\Field\Renderer\SliderStyle */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<ul class="dsshopby-slider-settings -style"
+    if="$data.default.options"
+    data-bind="scope: 'index = dsshopby_slider_settings'">
+    <!-- ko foreach: { data: Object.keys($data.default.options), as: 'key' } -->
+        <li data-bind="attr: { class: 'dsshopby-slider-container ' + $data }">
+            <label class="dsshopby-label">
+                <input class="dsshopby-input"
+                       type="radio"
+                       name="groups[slider][fields][slider_style][value]"
+                       data-bind="
+                         attr: {
+                            value: $data,
+                            checked: ($parent.default.style === $data)
+                         }
+
+                ">
+                <span class="dsshopby-title" data-bind="i18n: $parent.default.options[$data]"></span>
+            </label>
+            <!-- ko template: { name: 'Dotsquares_Shopby/slider/' + $data.replace('-', '') } --><!-- /ko -->
+        </li>
+    <!-- /ko-->
+</ul>

@@ -1,0 +1,25 @@
+<?php
+/** @var \Dotsquares\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Dotsquares\Shopby\Block\Navigation\FilterRenderer $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+$filterCode = $escaper->escapeHtml($filterSetting->getAttributeCode());
+$currentCategoryId = (int) $block->getCurrentCategoryId();
+?>
+<form class="dsshopby-flyout-block"
+      data-dsshopby-filter="<?= /* @noEscape */ $filterCode; ?>"
+      data-dsshopby-filter-request-var="<?= /* @noEscape */ $block->getFilter()->getRequestVar(); ?>"
+      <?php if ($block->getEnableOverflowScroll($filterSetting) > 0): ?>
+            style="max-height:<?= /* @noEscape */ (int) $block->getOverflowScrollValue($filterSetting); ?>px;
+            overflow-y: auto;
+            overflow-x: hidden;"
+      <?php endif; ?>
+>
+    <ul class="items ds-filter-items-<?= /* @noEscape */ $filterCode; ?> dsshopby-fly-out-view"
+        data-mage-init='{"dsShopbyFilterFlyout":{
+            "currentCategoryId": "<?= /* @noEscape */ $currentCategoryId; ?>"
+        }}'
+    >
+        <?= /* @noEscape */ $categoryTreeHtml; ?>
+    </ul>
+</form>

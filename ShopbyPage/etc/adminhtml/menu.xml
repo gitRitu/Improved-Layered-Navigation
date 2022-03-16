@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Dotsquares_ShopbyPage::page" title="Custom Pages (Facets)" module="Dotsquares_ShopbyPage" sortOrder="0" parent="Dotsquares_ShopbyBase::layered_navigation" action="dotsquares_shopbypage/page/index" resource="Dotsquares_ShopbyPage::page"/>
+    </menu>
+</config>

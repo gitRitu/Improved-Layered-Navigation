@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:dotsquares:module:Dotsquares_Base:etc/less_to_css.xsd">
+    <module name="Dotsquares_ShopbyBase">
+        <handle name="default" />
+        <cssOptions fileName="dsshopby-base" path="css/source/mkcss" />
+    </module>
+</config>
+

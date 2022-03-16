@@ -1,0 +1,52 @@
+<?php
+/** @var \Dotsquares\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Dotsquares\Shopby\Block\Navigation\FilterRenderer $block */
+/** @var \Dotsquares\Shopby\Model\Layer\Filter\CategoryItems $filterItems */
+/** @var \Dotsquares\Shopby\Model\Layer\Filter\Item $filterItem */
+/** @var \Magento\Framework\Escaper $escaper */
+
+$filterUniqId = uniqid();
+$filterCode = $escaper->escapeHtml($filterSetting->getAttributeCode());
+?>
+
+<div class="ds-category-wrapper dsshopby-dropdown-<?= /* @noEscape */ $filterUniqId ?>"
+     data-dsshopby-js="category-dropdown-<?= /* @noEscape */ $filterUniqId ?>"
+>
+    <div class="dsshopby-category-dropdown" data-dsshopby-js="category-dropdown">
+        <?php foreach ($filterItems->getAllItems() as $filterItem): ?>
+            <?php if ($block->checkedFilter($filterItem)): ?>
+                <div class="ds-multiselect-crumb">
+                    <?= $escaper->escapeHtml($filterItem->getOptionLabel()) ?>
+                    <button data-remove-url="<?= $escaper->escapeUrl($filterItem->getUrl()) ?>"
+                            class="ds-category-remove action-close"
+                            data-mage-init='{"dsShopbyFilterCategoryDropdown":{}}'
+                            type="button"
+                            aria-label="<?= $escaper->escapeHtmlAttr(__('Remove')) ?>"
+                            title="<?= $escaper->escapeHtmlAttr(__('Remove')) ?>"></button>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+    <form data-dsshopby-filter="<?= /* @noEscape */ $filterCode ?>"
+          data-dsshopby-filter-request-var="<?= /* @noEscape */ $block->getFilter()->getRequestVar() ?>">
+        <ol data-dsshopby-js="filter-items-<?= /* @noEscape */ $filterCode ?>"
+            class="items ds-filter-items-<?= /* @noEscape */ $filterCode ?> ds-category-view
+        <?= /* @noEscape */ $block->isMultiselect($filterSetting) ? '-ds-multiselect' : '-ds-singleselect' ?>">
+            <?= /* @noEscape */ $categoryTreeHtml ?>
+        </ol>
+    </form>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "dsShopbyFilterCollapse": {
+            "mode": "dropdown",
+            "collapseSelector": "<?= /* @noEscape */ $block->isTopNav() ? '.dotsquares-catalog-topnav' : '.sidebar' ?>",
+            "currentCategoryId": "<?= /* @noEscape */ (int) $block->getCurrentCategoryId() ?>",
+            "filterUniqId": "<?= /* @noEscape */ $filterUniqId ?>",
+            "filterCode": "<?= /* @noEscape */ $filterCode ?>"
+        }
+    }
+}
+</script>
